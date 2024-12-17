@@ -160,11 +160,11 @@ Navigation: Home page  Manage
 ### Manage
 The Client Management page allows to manage the existing client's data on the Momentum platform.
 <br>
-    <div style="text-align: center;">
+<div style="text-align: center;">
     <figcaption>Figure 4: Administration Home Page – Client Management</figcaption>
     <img src="img/Picture4.png" alt="Logo" width="600" height="300">
     <figcaption></figcaption>
-    </div>
+</div>
 <br>
 <div class="note" style="background-color: #e7f4ff; padding: 10px; border-left: 5px solid #0078d4; margin-bottom: 20px; text-align: left;">
     <strong>Navigation: </strong>Home page -> <strong>Manage </strong>

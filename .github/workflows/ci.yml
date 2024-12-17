@@ -1,29 +1,40 @@
-name: ci
-on:
-  push:
+name: ci # This defines the name of the GitHub Action workflow.
+
+on: # Defines when this workflow should run.
+  push: # The workflow will run when there is a push to the specified branches.
     branches:
-      - master
-      - main
-permissions:
-  contents: write
+      - master # When there is a push to the 'master' branch.
+      - main # When there is a push to the 'main' branch.
+
+permissions: # Define what permissions the workflow should have.
+  contents: write # This gives the action permission to write to the contents of the repository.
+
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Configure Git Credentials
+  deploy: # This defines a job in the workflow. In this case, the job is named 'deploy'.
+    runs-on: ubuntu-latest # This job will run on the latest available Ubuntu environment.
+
+    steps: # Define a series of steps to be executed in the job.
+      - uses: actions/checkout@v4 # This step checks out the repository's code so it can be used in the workflow.
+
+      - name: Configure Git Credentials # Configures the Git user for commit purposes.
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v5
+
+      - uses: actions/setup-python@v5 # This sets up Python in the environment.
         with:
-          python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v4
+          python-version: 3.x # Specifies the version of Python to use (here, it will use any available version of Python 3).
+
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # Generates a unique cache ID based on the current UTC week number.
+
+      - uses: actions/cache@v4 # This step uses caching to speed up the workflow by reusing previously downloaded files.
         with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
+          key: mkdocs-material-${{ env.cache_id }} # Uses the cache ID for the key.
+          path: .cache # Specifies the directory where cached files are stored.
           restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+            mkdocs-material-  # Restore caches from previous runs based on this key prefix.
+
+      - run: pip install mkdocs # Installs MkDocs core package.
+      - run: pip install mkdocs-material # Installs the Material theme for MkDocs.
+
+      - run: mkdocs gh-deploy --force # Builds the MkDocs documentation and deploys it to GitHub Pages (overwrites existing content on the 'gh-pages' branch).

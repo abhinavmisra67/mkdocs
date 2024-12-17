@@ -196,6 +196,8 @@ Select the required client and click the <strong>Kebab Menu</strong> (or) <stron
 - `mkdocs -h` - Print help message and exit.
 - Checking two bullet point
 
+[Release Notes](about.md)
+
 ## Project layout
 
     mkdocs.yml    # The configuration file.

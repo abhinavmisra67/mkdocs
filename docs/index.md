@@ -189,18 +189,3 @@ Select the required client and click the <strong>Kebab Menu</strong> (or) <stron
   <li>Click<strong> Update</strong> to save the changes</li>
 </ol>
 </p>
-
-- `mkdocs new [dir-name]` - Create a new projects.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.
-- Checking two bullet point
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
-        img/
-            screenshot.png
